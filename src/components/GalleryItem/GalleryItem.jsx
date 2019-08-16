@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './GalleryItem.css'
 
 class GalleryItem extends Component {
 	state = {
@@ -25,7 +26,7 @@ class GalleryItem extends Component {
 						Love it!
 					</button>
 				</div>
-				<div className='loveCount'>
+				<div className='loveCountContainer'>
 					<h5>{this.props.picture.likes} people love this!</h5>
 				</div>
 			</div>

@@ -1,0 +1,30 @@
+.galleryCard {
+  width: 150px;
+  height: 300px;
+  border: solid grey 2px;
+}
+
+.photoContainer {
+  width: 150px;
+  height: auto;
+  min-height: 100px;
+
+}
+.photoContainer img {
+  max-width: 150px;
+  height: auto;
+}
+.buttonContainer {
+  border: solid grey 1px;
+  display: block;
+  width: auto;
+  height: auto;
+}
+
+.loveCountContainer {
+  font-weight: lighter;
+  font-size: smaller;
+  color: grey;
+  background-color: lightblue;
+  height: auto;
+}
