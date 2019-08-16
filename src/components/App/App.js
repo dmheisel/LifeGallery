@@ -20,11 +20,26 @@ class App extends Component {
 			.catch(error => {
 				console.log('error on GET request from server: ', error);
 			});
-	}
+  }
+
+  addLove = (id) => {
+    //PUT method to add to love count of photo on server using axios
+    Axios
+      .put(`/gallery/${id}`)
+      .then(response => {
+        console.log(`successful PUT request to server: ${response}`)
+        this.getImages()
+      })
+      .catch(error => {
+        console.log(`error on PUT request to server: ${error}`)
+      })
+  }
   componentDidMount = () => {
     console.log('app loaded');
     this.getImages()
   }
+
+
 	render() {
 		return (
 			<div className='App'>
