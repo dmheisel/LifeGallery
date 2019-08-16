@@ -25,7 +25,7 @@ class App extends Component {
   addLove = (id) => {
     //PUT method to add to love count of photo on server using axios
     Axios
-      .put(`/gallery/${id}`)
+      .put(`/gallery/like/${id}`)
       .then(response => {
         console.log(`successful PUT request to server: ${response}`)
         this.getImages()
@@ -47,7 +47,7 @@ class App extends Component {
 					<h1 className='App-title'>Gallery of my life</h1>
 				</header>
 				<br />
-        <GalleryList galleryList={this.state.galleryList} />
+        <GalleryList galleryList={this.state.galleryList} addLove={this.addLove}/>
 			</div>
 		);
 	}
