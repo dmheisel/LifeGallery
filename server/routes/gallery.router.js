@@ -44,6 +44,7 @@ router.get('/', (req, res) => {
 //POST route
 router.post('/', (req, res) => {
 	const newPicture = req.body;
+	console.log(newPicture)
 	const values=[newPicture.path, newPicture.title, newPicture.description]
 	const sqlQuery =
 		`INSERT
