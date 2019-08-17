@@ -10,7 +10,11 @@ import Typography from '@material-ui/core/Typography';
 const styles = theme => ({
 	icon: {
 		color: 'rgba(239, 134, 134, 0.93)'
-	}
+	},
+	// image: {
+	// 	height: '200px',
+	// 	maxWidth:
+	// }
 }); // sets color for icon to use at light pink
 
 class GalleryItem extends Component {
@@ -32,6 +36,7 @@ class GalleryItem extends Component {
 				<img
 					src={this.props.picture.path}
 					alt='gallery item'
+					cols={1}
 					style={{ height: 200, width: 'auto', margin: 2 }}
 					onClick={this.toggleDescription}
 				/>
