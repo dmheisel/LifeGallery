@@ -15,8 +15,9 @@ const styles = theme => ({
 		backgroundColor: theme.palette.background.paper
 	},
 	gridList: {
-		width: '90%',
-		height: '100vh'
+		width: '80vw',
+		height: '90vh',
+		justifyContent: 'center'
 	}
 });
 class GalleryList extends Component {
@@ -37,7 +38,7 @@ class GalleryList extends Component {
 		return (
 			<div className={classes.root}>
 				<GridList className={classes.gridList}>
-					<GridListTile key='Subheader' cols={2} style={{ height: 'auto' }}>
+					<GridListTile key='Subheader' cols={3} style={{ height: 'auto' }}>
 						<ListSubheader component='div'>
 							Gallery of My Life
 						</ListSubheader>
