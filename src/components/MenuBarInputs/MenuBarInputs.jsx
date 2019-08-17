@@ -83,7 +83,16 @@ class MenuBarInputs extends Component {
 					color='primary'
 					aria-label='add'
 					className={classes.fab}
-					onClick={() => this.props.postPicture(this.state.newPicture)}>
+					onClick={() => {
+						this.props.postPicture(this.state.newPicture);
+						this.setState({
+							newPicture: {
+								path: '',
+								title: '',
+								description: ''
+							}
+						});
+					}}>
 					<AddIcon />
 				</Fab>
 			</form>
