@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import './App.css';
+// import './App.css';
 import Axios from 'axios';
 import GalleryList from '../GalleryList/GalleryList'
+import Container from '@material-ui/core/Container'
+// import CssBaseline from '@material-ui/core/CssBaseline'
 
 class App extends Component {
 	state = {
@@ -22,7 +24,7 @@ class App extends Component {
 			});
   }
 
-  addLove = (id) => {
+  addLike = (id) => {
     //PUT method to add to love count of photo on server using axios
     Axios
       .put(`/gallery/like/${id}`)
@@ -42,13 +44,14 @@ class App extends Component {
 
 	render() {
 		return (
-			<div className='App'>
-				<header className='App-header'>
+			<Container maxWidth="lg" className='App'>
+				{/* <CssBaseline /> */}
+				{/* <header className='App-header'>
 					<h1 className='App-title'>Gallery of my life</h1>
 				</header>
-				<br />
-        <GalleryList galleryList={this.state.galleryList} addLove={this.addLove}/>
-			</div>
+				<br /> */}
+        <GalleryList galleryList={this.state.galleryList} addLike={this.addLike}/>
+			</Container>
 		);
 	}
 }
