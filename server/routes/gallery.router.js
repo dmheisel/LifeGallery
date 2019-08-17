@@ -17,7 +17,7 @@ router.put('/like/:id', (req, res) => {
 		.query(sqlQuery, [galleryId])
 		.then(result => {
 			console.log('successful PUT route to database, updated photo likes');
-			res.sendStatus(201);
+			res.sendStatus(200);
 		})
 		.catch(err => {
 			console.log(`error on PUT route to database: ${err}`);
@@ -27,8 +27,7 @@ router.put('/like/:id', (req, res) => {
 
 // GET Route
 router.get('/', (req, res) => {
-    const sqlQuery =
-        `SELECT * FROM "photos"
+	const sqlQuery = `SELECT * FROM "photos"
         ORDER BY "id";`;
 	pool
 		.query(sqlQuery)
@@ -41,5 +40,30 @@ router.get('/', (req, res) => {
 			res.sendStatus(500);
 		});
 }); // END GET Route
+
+//POST route
+router.post('/', (req, res) => {
+	const newPicture = req.body;
+	console.log(newPicture)
+	const values=[newPicture.path, newPicture.title, newPicture.description]
+	const sqlQuery =
+		`INSERT
+			INTO "photos"
+				("path", "title", "description")
+			VALUES
+				($1, $2, $3);`;
+
+	pool
+		.query(sqlQuery, values)
+		.then(result => {
+			console.log(`sucessful POST route to database: ${result}`)
+			res.sendStatus(201)
+		})
+		.catch(error => {
+			console.log(`error on POST route to database: ${error}`)
+			res.sendStatus(500)
+		})
+
+});
 
 module.exports = router;
