@@ -1,9 +1,11 @@
 .galleryCard {
   width: 150px;
-  height: 300px;
+  height: 200px;
   border: solid grey 2px;
 }
-
+h5 {
+  margin: 0;
+}
 .photoContainer {
   width: 150px;
   height: auto;
@@ -17,8 +19,8 @@
 .buttonContainer {
   border: solid grey 1px;
   display: block;
-  width: auto;
-  height: auto;
+  padding: 0;
+  margin: 0;
 }
 
 .loveCountContainer {
@@ -26,5 +28,6 @@
   font-size: smaller;
   color: grey;
   background-color: lightblue;
-  height: auto;
+  margin: 0;
+  padding: 0;
 }
