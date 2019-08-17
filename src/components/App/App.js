@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Axios from 'axios';
 import GalleryList from '../GalleryList/GalleryList';
 import Container from '@material-ui/core/Container';
-import AddPictureForm from '../AddPictureMenuBar/AddPictureMenuBar';
+import AddPictureMenuBar from '../AddPictureMenuBar/AddPictureMenuBar';
 // import CssBaseline from '@material-ui/core/CssBaseline'
 
 class App extends Component {
@@ -37,7 +37,7 @@ class App extends Component {
 	};
 
 	postPicture = picture => {
-		Axios.post('/gallery')
+		Axios.post('/gallery', picture)
 			.then(response => {
 				console.log(`successful POST route to server: ${response}`);
 				this.getImages();
@@ -47,6 +47,7 @@ class App extends Component {
 			});
 	};
 
+
 	componentDidMount = () => {
 		console.log('app loaded');
 		this.getImages();
@@ -55,7 +56,7 @@ class App extends Component {
 	render() {
 		return (
 			<Container maxWidth='x-lg' className='App'>
-				<AddPictureForm />
+				<AddPictureMenuBar postPicture={this.postPicture}/>
 				<GalleryList
 					galleryList={this.state.galleryList}
 					addLike={this.addLike}

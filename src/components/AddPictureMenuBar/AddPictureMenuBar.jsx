@@ -6,10 +6,12 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MenuBarInputs from '../MenuBarInputs/MenuBarInputs'
+import { Z_FIXED } from 'zlib';
 
 const styles = theme => ({
   root: {
-    width: '100%'
+    width: '100%',
+    position: 'sticky'
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
@@ -31,7 +33,7 @@ class AddPictureForm extends Component {
             </Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
-            <MenuBarInputs />
+            <MenuBarInputs postPicture={this.props.postPicture}/>
           </ExpansionPanelDetails>
         </ExpansionPanel>
       </div>
