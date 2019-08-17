@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Axios from 'axios';
 import GalleryList from '../GalleryList/GalleryList';
 import Container from '@material-ui/core/Container';
+import AddPictureForm from '../AddPictureMenuBar/AddPictureMenuBar';
 // import CssBaseline from '@material-ui/core/CssBaseline'
 
 class App extends Component {
@@ -53,12 +54,8 @@ class App extends Component {
 
 	render() {
 		return (
-			<Container maxWidth='lg' className='App'>
-				{/* <CssBaseline /> */}
-				{/* <header className='App-header'>
-					<h1 className='App-title'>Gallery of my life</h1>
-				</header>
-				<br /> */}
+			<Container maxWidth='x-lg' className='App'>
+				<AddPictureForm />
 				<GalleryList
 					galleryList={this.state.galleryList}
 					addLike={this.addLike}

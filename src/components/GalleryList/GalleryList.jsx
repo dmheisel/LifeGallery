@@ -15,8 +15,8 @@ const styles = theme => ({
 		backgroundColor: theme.palette.background.paper
 	},
 	gridList: {
-		width: 1024,
-		height: 'auto'
+		width: '90%',
+		height: '100vh'
 	}
 });
 class GalleryList extends Component {
