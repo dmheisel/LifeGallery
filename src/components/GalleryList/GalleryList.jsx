@@ -17,7 +17,7 @@ const styles = theme => ({
 	gridList: {
 		width: '80vw',
 		height: '90vh',
-		justifyContent: 'center'
+		justifyContent: 'space-around'
 	}
 });
 class GalleryList extends Component {
@@ -25,11 +25,9 @@ class GalleryList extends Component {
 		//maps over gallery list and returns a GalleryItem element for each picture
 		let pictureList = this.props.galleryList.map(picture => {
 			return (
-				<GalleryItem
-					picture={picture}
-					addLike={this.props.addLike}
-					key={picture.id}
-				/>
+				<GridListTile key={picture.id} cols={1}>
+					<GalleryItem picture={picture} addLike={this.props.addLike} />
+				</GridListTile>
 			);
 		});
 
@@ -37,14 +35,22 @@ class GalleryList extends Component {
 
 		return (
 			<div className={classes.root}>
-				<GridList className={classes.gridList}>
+				<GridList cols={4} cellHeight={200} spacing={4} className={classes.gridList} >
+					<GridListTile key="Subheader"cols={4} style={{ height: 'auto' }}>
+						<ListSubheader component='div' >
+							Galler of My Life
+						</ListSubheader>
+					</GridListTile>
+					{pictureList}
+				</GridList>
+				{/* <GridList className={classes.gridList}>
 					<GridListTile key='Subheader' cols={3} style={{ height: 'auto' }}>
 						<ListSubheader component='div'>
 							Gallery of My Life
 						</ListSubheader>
 					</GridListTile>
 					{pictureList}
-				</GridList>
+				</GridList> */}
 			</div>
 		);
 	}
