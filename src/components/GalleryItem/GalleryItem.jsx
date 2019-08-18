@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import './GalleryItem.css'
 import { withStyles } from '@material-ui/core/styles';
-import GridListTile from '@material-ui/core/GridListTile';
+// import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
 import IconButton from '@material-ui/core/IconButton';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
@@ -11,10 +11,10 @@ const styles = theme => ({
 	icon: {
 		color: 'rgba(239, 134, 134, 0.93)'
 	},
-	// image: {
-	// 	height: '200px',
-	// 	maxWidth:
-	// }
+	image: {
+		height: '100%',
+		width: 'auto',
+	},
 }); // sets color for icon to use at light pink
 
 class GalleryItem extends Component {
@@ -29,18 +29,17 @@ class GalleryItem extends Component {
 
 	render() {
 		const { classes } = this.props;
+
+		//Grid List tile is composed of photo with overlaid titlebar
+		//Titlebar has picture title, number of likes, and heart icon to add
 		return (
-			//Grid List tile is composed of photo with overlaid titlebar
-			//Titlebar has picture title, number of likes, and heart icone to add
-			<GridListTile key={this.props.picture.id}>
+			<div className={classes.image}>
 				<img
 					src={this.props.picture.path}
 					alt='gallery item'
-					cols={1}
-					style={{ height: 200, width: 'auto', margin: 2 }}
+					className={classes.image}
 					onClick={this.toggleDescription}
 				/>
-
 				{this.state.isFlipped ? (
 					//ternary operator for flipped state -- if FLIPPED, the title bar is
 					//the entire description overlaid over the whole image.
@@ -59,7 +58,10 @@ class GalleryItem extends Component {
 				) : (
 					<GridListTileBar
 						title={this.props.picture.title}
-						subtitle={<span>Liked by {this.props.picture.likes} people </span>}
+						subtitle={
+							<span>Liked by {this.props.picture.likes} people </span>
+						}
+						style={{ height: 'auto' }}
 						actionIcon={
 							<IconButton
 								className={classes.icon}
@@ -71,7 +73,17 @@ class GalleryItem extends Component {
 						}
 					/>
 				)}
-			</GridListTile>
+			</div>
+			// <GridListTile key={this.props.picture.id}>
+			// 	<img
+			// 		src={this.props.picture.path}
+			// 		alt='gallery item'
+			// 		cols={1}
+			// 		style={{ height: 200, width: 'auto', margin: 2 }}
+			// 		onClick={this.toggleDescription}
+			// 	/>
+
+			//
 		);
 	}
 }
