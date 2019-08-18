@@ -8,10 +8,11 @@ const styles = theme => ({
 	container: {
 		display: 'flex',
 		flexWrap: 'wrap',
-		justifyContent: 'center'
+		justifyContent: 'space-around',
+		margin: 'auto'
 	},
 	textField: {
-		width: '20vw',
+		width: '25vw',
 		margin: theme.spacing(1)
 	},
 	descriptionField: {
@@ -19,7 +20,7 @@ const styles = theme => ({
 		margin: theme.spacing(1)
 	},
 	fab: {
-		margin: theme.spacing(1)
+		margin: theme.spacing(1),
 	}
 });
 
@@ -27,7 +28,6 @@ class MenuBarInputs extends Component {
 	state = {
 		newPicture: {
 			path: '',
-			title: '',
 			description: ''
 		}
 	};
@@ -36,65 +36,56 @@ class MenuBarInputs extends Component {
 		const { classes } = this.props;
 		return (
 			<form className={classes.container}>
-				<TextField
-					id='pathInput'
-					label='Photo Url'
-					value={this.state.newPicture.path}
-					className={classes.textField}
-					onChange={event =>
-						this.setState({
-							newPicture: { ...this.state.newPicture, path: event.target.value }
-						})
-					}
-					margin='normal'
-				/>
-				<TextField
-					id='titleInput'
-					label='Photo Title'
-					value={this.state.newPicture.title}
-					className={classes.textField}
-					onChange={event =>
-						this.setState({
-							newPicture: {
-								...this.state.newPicture,
-								title: event.target.value
-							}
-						})
-					}
-					margin='normal'
-				/>
-				<TextField
-					id='Description Input'
-					label='Brief Description of Photo'
-					value={this.state.newPicture.description}
-					className={classes.descriptionField}
-					onChange={event =>
-						this.setState({
-							newPicture: {
-								...this.state.newPicture,
-								description: event.target.value
-							}
-						})
-					}
-					margin='normal'
-				/>
-				<Fab
-					size='small'
-					color='primary'
-					aria-label='add'
-					className={classes.fab}
-					onClick={() => {
-						this.props.postPicture(this.state.newPicture);
-						this.setState({
-							newPicture: {
-								path: '',
-								title: '',
-								description: ''
-							}
-						});
-					}}>
-					<AddIcon />
-				</Fab>
+				<div className={classes.container}>
+					<TextField
+						id='pathInput'
+						label='Photo Url'
+						value={this.state.newPicture.path}
+						className={classes.textField}
+						onChange={event =>
+							this.setState({
+								newPicture: {
+									...this.state.newPicture,
+									path: event.target.value
+								}
+							})
+						}
+						margin='normal'
+					/>
+					<TextField
+						id='Description Input'
+						label='Brief Description of Photo'
+						value={this.state.newPicture.description}
+						className={classes.descriptionField}
+						onChange={event =>
+							this.setState({
+								newPicture: {
+									...this.state.newPicture,
+									description: event.target.value
+								}
+							})
+						}
+						margin='normal'
+					/>
+				</div>
+				<div>
+					<Fab
+						size='small'
+						color='primary'
+						aria-label='add'
+						className={classes.fab}
+						onClick={() => {
+							this.props.postPicture(this.state.newPicture);
+							this.setState({
+								newPicture: {
+									path: '',
+									description: ''
+								}
+							});
+						}}>
+						<AddIcon />
+					</Fab>
+				</div>
 			</form>
 		);
 	}

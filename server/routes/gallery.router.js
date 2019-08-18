@@ -45,13 +45,13 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
 	const newPicture = req.body;
 	console.log(newPicture)
-	const values=[newPicture.path, newPicture.title, newPicture.description]
+	const values=[newPicture.path, newPicture.description]
 	const sqlQuery =
 		`INSERT
 			INTO "photos"
-				("path", "title", "description")
+				("path", "description")
 			VALUES
-				($1, $2, $3);`;
+				($1, $2);`;
 
 	pool
 		.query(sqlQuery, values)
