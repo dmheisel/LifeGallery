@@ -11,16 +11,16 @@ const styles = theme => ({
 		display: 'flex',
 		flexWrap: 'wrap',
 		justifyContent: 'space-around',
-		overflow: 'hidden',
 		backgroundColor: theme.palette.background.paper
 	},
 	gridList: {
-		width: '80vw',
+		width: 'auto',
 		height: '90vh',
 		justifyContent: 'space-around'
 	}
 });
 class GalleryList extends Component {
+
 	render() {
 		//maps over gallery list and returns a GalleryItem element for each picture
 		let pictureList = this.props.galleryList.map(picture => {
@@ -35,10 +35,10 @@ class GalleryList extends Component {
 
 		return (
 			<div className={classes.root}>
-				<GridList cols={4} cellHeight={200} spacing={4} className={classes.gridList} >
-					<GridListTile key="Subheader"cols={4} style={{ height: 'auto' }}>
+				<GridList cols={3} cellHeight={300} spacing={4} className={classes.gridList} >
+					<GridListTile key="Subheader"cols={3} style={{ height: 'auto' }}>
 						<ListSubheader component='div' >
-							Galler of My Life
+							Gallery of My Life
 						</ListSubheader>
 					</GridListTile>
 					{pictureList}

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool');
-const galleryItems = require('../modules/gallery.data');
+// const galleryItems = require('../modules/gallery.data');
 
 // DO NOT MODIFY THIS FILE FOR BASE MODE
 

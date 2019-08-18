@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 // import './GalleryItem.css'
 import { withStyles } from '@material-ui/core/styles';
-// import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
 import IconButton from '@material-ui/core/IconButton';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
@@ -14,6 +13,8 @@ const styles = theme => ({
 	image: {
 		height: '100%',
 		width: 'auto',
+		objectFit: 'cover',
+		objectPosition: 'absolute'
 	},
 }); // sets color for icon to use at light pink
 
