@@ -47,7 +47,7 @@ class AddToGallery extends Component {
 							<AddIcon />
 						</Fab>
 					</Tooltip>
-					<Tooltip title='Delete an Image'>
+					<Tooltip title={this.props.inDeleteMode ? 'Exit Delete Mode' : 'Delete an Image'}>
 						<Fab
 							color='secondary'
 							aria-label='Remove'

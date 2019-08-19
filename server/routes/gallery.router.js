@@ -44,10 +44,9 @@ router.get('/', (req, res) => {
 //POST route
 router.post('/', (req, res) => {
 	const newPicture = req.body;
-	console.log(newPicture)
-	const values=[newPicture.path, newPicture.description]
-	const sqlQuery =
-		`INSERT
+	console.log(newPicture);
+	const values = [newPicture.path, newPicture.description];
+	const sqlQuery = `INSERT
 			INTO "photos"
 				("path", "description")
 			VALUES
@@ -56,14 +55,32 @@ router.post('/', (req, res) => {
 	pool
 		.query(sqlQuery, values)
 		.then(result => {
-			console.log(`sucessful POST route to database: ${result}`)
-			res.sendStatus(201)
+			console.log(`sucessful POST route to database: ${result}`);
+			res.sendStatus(201);
 		})
 		.catch(error => {
-			console.log(`error on POST route to database: ${error}`)
-			res.sendStatus(500)
-		})
+			console.log(`error on POST route to database: ${error}`);
+			res.sendStatus(500);
+		});
+});
 
+//DELETE route
+router.delete('/:id', (req, res) => {
+	const idToDelete = req.params.id;
+	const sqlQuery = `
+		DELETE FROM "photos"
+			WHERE "id" = $1;`;
+
+	pool
+		.query(sqlQuery, [idToDelete])
+		.then(result => {
+			console.log(`Successful DELETE route to database`);
+			res.sendStatus(204);
+		})
+		.catch(error => {
+			console.log(`error on DELETE route to database: ${error}`);
+			res.sendStatus(500);
+		});
 });
 
 module.exports = router;

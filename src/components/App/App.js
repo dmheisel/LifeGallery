@@ -11,7 +11,6 @@ import Container from '@material-ui/core/Container';
 class App extends Component {
 	state = {
 		galleryList: [],
-		currentPictureId: '',
 		inDeleteMode: false,
 	};
 
@@ -57,6 +56,15 @@ class App extends Component {
 
 	deletePicture = (id) => {
 		console.log(`Marked picture with id ${id} to delete`)
+		// this.setState({dialogueOpen: true})
+		axios
+			.delete(`/gallery/${id}`)
+			.then(response => {
+				console.log(`successful delete from server: ${response}`);
+				this.getImages()
+			}).catch(error => {
+				console.log(`error on DELETE route to server: ${error}`)
+			})
 	}
 
 	componentDidMount = () => {
