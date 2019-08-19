@@ -6,6 +6,7 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 
+//styles for menu drawer & input fields
 const styles = theme => ({
 	root: {
 		width: '75%',
@@ -15,16 +16,11 @@ const styles = theme => ({
 	button: {
 		margin: theme.spacing(1)
 	},
-	pathField: {
+	textInput: {
 		marginLeft: theme.spacing(1),
-		marginRight: theme.spacing(0.5),
-		width: '75%'
-	},
-	descriptionField: {
-		marginLeft: theme.spacing(0.5),
 		marginRight: theme.spacing(1),
 		width: '75%'
-	}
+	},
 });
 
 class MenuBarInputs extends Component {
@@ -39,6 +35,7 @@ class MenuBarInputs extends Component {
 		const { classes } = this.props;
 
 		return (
+			//uses Grid to display text inputs and button in top drawer
 			<div className={classes.root}>
 				<Grid
 					container
@@ -59,7 +56,7 @@ class MenuBarInputs extends Component {
 									}
 								});
 							}}
-							className={classes.pathField}
+							className={classes.textInput}
 						/>
 					</Grid>
 					<Grid item xs={8}>
@@ -75,7 +72,7 @@ class MenuBarInputs extends Component {
 									}
 								});
 							}}
-							className={classes.descriptionField}
+							className={classes.textInput}
 						/>
 					</Grid>
 					<Grid item xs={3}>

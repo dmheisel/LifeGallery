@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import GalleryItem from '../GalleryItem/GalleryItem';
-// import './GalleryList.css'
 import GridList from '@material-ui/core/GridList';
 import { withStyles } from '@material-ui/core/styles';
 import GridListTile from '@material-ui/core/GridListTile';

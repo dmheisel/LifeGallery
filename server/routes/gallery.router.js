@@ -51,7 +51,6 @@ router.post('/', (req, res) => {
 				("path", "description")
 			VALUES
 				($1, $2);`;
-
 	pool
 		.query(sqlQuery, values)
 		.then(result => {
@@ -62,7 +61,7 @@ router.post('/', (req, res) => {
 			console.log(`error on POST route to database: ${error}`);
 			res.sendStatus(500);
 		});
-});
+}); //end POST route
 
 //DELETE route
 router.delete('/:id', (req, res) => {
@@ -81,6 +80,6 @@ router.delete('/:id', (req, res) => {
 			console.log(`error on DELETE route to database: ${error}`);
 			res.sendStatus(500);
 		});
-});
+}); // end DELETE route
 
 module.exports = router;

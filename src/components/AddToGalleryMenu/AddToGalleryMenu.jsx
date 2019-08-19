@@ -13,15 +13,15 @@ import Drawer from '@material-ui/core/Drawer';
 //styles to use with floating action button
 const styles = theme => ({
 	fab: {
-		margin: theme.spacing(1)
+		margin: '5px 0px'
 	},
 	root: {
 		display: 'flex',
 		flexDirection: 'column',
-		position: 'absolute'
-	}
-});
-
+		position: 'absolute',
+		width: '5%'
+	} // moves icons into column along the side of images, does not scroll off page
+})
 class AddToGallery extends Component {
 	state = {
 		isDrawerShown: false
@@ -30,7 +30,7 @@ class AddToGallery extends Component {
 	//togglesDrawer
 	toggleDrawer = () => {
 		this.setState({ isDrawerShown: !this.state.isDrawerShown });
-	};
+	}; // drawer open/close relies on state
 
 	render() {
 		const { classes } = this.props;
@@ -43,17 +43,19 @@ class AddToGallery extends Component {
 							color='primary'
 							aria-label='add'
 							className={classes.fab}
-							onClick={this.toggleDrawer}>
+							onClick={this.toggleDrawer}> 
 							<AddIcon />
 						</Fab>
 					</Tooltip>
 					<Tooltip title={this.props.inDeleteMode ? 'Exit Delete Mode' : 'Delete an Image'}>
+						{/* dynamic tooltip for delete button */}
 						<Fab
 							color='secondary'
-							aria-label='Remove'
+							aria-label='Delete'
 							className={classes.fab}
 							onClick={() => this.props.toggleDeleteMode()}>
 							{this.props.inDeleteMode ? <Delete /> : <DeleteOutline />}
+							{/* Dynamic button - in delete mode is filled */}
 						</Fab>
 					</Tooltip>
 				</div>
