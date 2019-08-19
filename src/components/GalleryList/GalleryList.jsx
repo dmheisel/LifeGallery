@@ -10,6 +10,8 @@ const styles = theme => ({
 	root: {
 		display: 'flex',
 		flexWrap: 'wrap',
+		width: '85%',
+		margin: 'auto',
 		justifyContent: 'space-around',
 		backgroundColor: theme.palette.background.paper
 	},
@@ -25,17 +27,20 @@ class GalleryList extends Component {
 		//maps over gallery list and returns a GalleryItem element for each picture
 		let pictureList = this.props.galleryList.map(picture => {
 			return (
-				<GridListTile key={picture.id} cols={1}>
-					<GalleryItem picture={picture} addLike={this.props.addLike} />
+				<GridListTile key={picture.id} cols={1} rows={1}>
+					<GalleryItem picture={picture}  addLike={this.props.addLike} />
 				</GridListTile>
 			);
 		});
 
 		const { classes } = this.props; //used for material-ui styling
 
+		// const getCols = () => {
+
+		// }
 		return (
 			<div className={classes.root}>
-				<GridList cols={3} cellHeight={300} spacing={4} className={classes.gridList} >
+				<GridList cols={3} cellHeight={250} spacing={4} className={classes.gridList} >
 					<GridListTile key="Subheader"cols={3} style={{ height: 'auto' }}>
 						<ListSubheader component='div' >
 							Gallery of My Life

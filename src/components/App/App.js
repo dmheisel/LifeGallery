@@ -1,19 +1,21 @@
 import React, { Component } from 'react';
 // import './App.css';
-import Axios from 'axios';
+import axios from 'axios';
 import GalleryList from '../GalleryList/GalleryList';
 import Container from '@material-ui/core/Container';
 import AddPictureMenuBar from '../AddPictureMenuBar/AddPictureMenuBar';
-// import CssBaseline from '@material-ui/core/CssBaseline'
+import AddToGalleryMenu from '../AddToGalleryMenu/AddToGalleryMenu'
 
 class App extends Component {
 	state = {
 		galleryList: [],
-		currentPictureId: ''
+		currentPictureId: '',
+		inDeleteMode: false
 	};
+	
 	getImages = () => {
 		//gets images from the server using axios
-		Axios.get('/gallery')
+		axios.get('/gallery')
 			.then(response => {
 				console.log('successful GET request from server');
 				this.setState({ galleryList: response.data });
@@ -26,7 +28,7 @@ class App extends Component {
 
 	addLike = id => {
 		//PUT method to add to love count of photo on server using axios
-		Axios.put(`/gallery/like/${id}`)
+		axios.put(`/gallery/like/${id}`)
 			.then(response => {
 				console.log(`successful PUT request to server: ${response}`);
 				this.getImages();
@@ -37,7 +39,7 @@ class App extends Component {
 	};
 
 	postPicture = picture => {
-		Axios.post('/gallery', picture)
+		axios.post('/gallery', picture)
 			.then(response => {
 				console.log(`successful POST route to server: ${response}`);
 				this.getImages();
@@ -55,8 +57,9 @@ class App extends Component {
 
 	render() {
 		return (
-			<Container maxWidth='x-lg' className='App'>
-				<AddPictureMenuBar postPicture={this.postPicture}/>
+			<Container className='App'>
+				<AddToGalleryMenu postPicture={this.postPicture} />
+				{/* <AddPictureMenuBar postPicture={this.postPicture}/> */}
 				<GalleryList
 					galleryList={this.state.galleryList}
 					addLike={this.addLike}

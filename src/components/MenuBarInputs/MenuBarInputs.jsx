@@ -1,26 +1,29 @@
 import React, { Component } from 'react';
-import TextField from '@material-ui/core/TextField';
+
+//material-ui imports
 import { withStyles } from '@material-ui/core/styles';
-import AddIcon from '@material-ui/icons/Add';
-import Fab from '@material-ui/core/Fab';
+import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 
 const styles = theme => ({
-	container: {
-		display: 'flex',
-		flexWrap: 'wrap',
-		justifyContent: 'space-around',
-		margin: 'auto'
+	root: {
+		width: '75%',
+		margin: 'auto',
+		flexGrow: 1
 	},
-	textField: {
-		width: '25vw',
+	button: {
 		margin: theme.spacing(1)
+	},
+	pathField: {
+		marginLeft: theme.spacing(1),
+		marginRight: theme.spacing(0.5),
+		width: '75%'
 	},
 	descriptionField: {
-		width: '40vw',
-		margin: theme.spacing(1)
-	},
-	fab: {
-		margin: theme.spacing(1),
+		marginLeft: theme.spacing(0.5),
+		marginRight: theme.spacing(1),
+		width: '75%'
 	}
 });
 
@@ -34,59 +37,61 @@ class MenuBarInputs extends Component {
 
 	render() {
 		const { classes } = this.props;
+
 		return (
-			<form className={classes.container}>
-				<div className={classes.container}>
-					<TextField
-						id='pathInput'
-						label='Photo Url'
-						value={this.state.newPicture.path}
-						className={classes.textField}
-						onChange={event =>
-							this.setState({
-								newPicture: {
-									...this.state.newPicture,
-									path: event.target.value
-								}
-							})
-						}
-						margin='normal'
-					/>
-					<TextField
-						id='Description Input'
-						label='Brief Description of Photo'
-						value={this.state.newPicture.description}
-						className={classes.descriptionField}
-						onChange={event =>
-							this.setState({
-								newPicture: {
-									...this.state.newPicture,
-									description: event.target.value
-								}
-							})
-						}
-						margin='normal'
-					/>
-				</div>
-				<div>
-					<Fab
-						size='small'
-						color='primary'
-						aria-label='add'
-						className={classes.fab}
-						onClick={() => {
-							this.props.postPicture(this.state.newPicture);
-							this.setState({
-								newPicture: {
-									path: '',
-									description: ''
-								}
-							});
-						}}>
-						<AddIcon />
-					</Fab>
-				</div>
-			</form>
+			<div className={classes.root}>
+				<Grid
+					container
+					spacing={3}
+					direction='row'
+					justify='space-around'
+					alignItems='center'>
+					<Grid item xs={4}>
+						<TextField
+							id='pathInput'
+							label='Path to Photo'
+							value={this.state.newPicture.path}
+							onChange={event => {
+								this.setState({
+									newPicture: {
+										...this.state.newPicture,
+										path: event.target.value
+									}
+								});
+							}}
+							className={classes.pathField}
+						/>
+					</Grid>
+					<Grid item xs={8}>
+						<TextField
+							id='descriptionINput'
+							label='Brief Description of Photo'
+							value={this.state.newPicture.description}
+							onChange={event => {
+								this.setState({
+									newPicture: {
+										...this.state.newPicture,
+										description: event.target.value
+									}
+								});
+							}}
+							className={classes.descriptionField}
+						/>
+					</Grid>
+					<Grid item xs={3}>
+						<Button
+							variant='contained'
+							component='span'
+							className={classes.button}
+							onClick={() => {
+								this.props.postPicture(this.state.newPicture);
+								this.setState({ newPicture: { path: '', description: '' } });
+							}}>
+							Add Picture
+						</Button>
+					</Grid>
+				</Grid>
+			</div>
 		);
 	}
 }

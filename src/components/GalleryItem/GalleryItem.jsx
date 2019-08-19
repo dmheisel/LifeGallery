@@ -14,7 +14,6 @@ const styles = theme => ({
 		height: '100%',
 		width: 'auto',
 		objectFit: 'cover',
-		objectPosition: 'absolute'
 	},
 }); // sets color for icon to use at light pink
 
@@ -24,6 +23,7 @@ class GalleryItem extends Component {
 	}; // tracks if photo should have description overlaid or not
 
 	toggleDescription = () => {
+
 		this.setState({ isFlipped: !this.state.isFlipped });
 		console.log(this.state);
 	};
