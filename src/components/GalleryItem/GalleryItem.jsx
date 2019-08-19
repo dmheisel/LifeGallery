@@ -45,7 +45,6 @@ class GalleryItem extends Component {
 			//creates an item to be contained in a grid list tile
 			//tilebar contains like count and heart button at bottom of image
 			//if description is toggled, tilebar covers picture and contains description
-
 			<div className={classes.image}>
 				<img
 					src={this.props.picture.path}
@@ -53,6 +52,7 @@ class GalleryItem extends Component {
 					className={classes.image}
 					onClick={() => this.getClickFunction()}
 				/>
+				{/* Ternary operator to determine how to display tilebar */}
 				{this.state.showDescription ? (
 					<GridListTileBar
 						title={

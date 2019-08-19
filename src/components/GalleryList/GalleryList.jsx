@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+
+//material-ui imports
 import GalleryItem from '../GalleryItem/GalleryItem';
 import GridList from '@material-ui/core/GridList';
 import { withStyles } from '@material-ui/core/styles';
 import GridListTile from '@material-ui/core/GridListTile';
 import ListSubheader from '@material-ui/core/ListSubheader';
 
-
+//styles
 const styles = theme => ({
 	root: {
 		display: 'flex',
@@ -24,11 +26,11 @@ const styles = theme => ({
 class GalleryList extends Component {
 
 	render() {
-		//maps over gallery list and returns a GalleryItem element for each picture
 
+		//maps over gallery list and returns a GalleryItem element for each picture
 		let pictureList = this.props.galleryList.map(picture => {
 			return (
-
+				//wrapped galleryitem in gridlist tile
 				<GridListTile key={picture.id} cols={1} rows={1} >
 					<GalleryItem
 						picture={picture}
@@ -42,9 +44,6 @@ class GalleryList extends Component {
 
 		const { classes } = this.props; //used for material-ui styling
 
-		// const getCols = () => {
-
-		// }
 		return (
 			<div className={classes.root}>
 				<GridList
@@ -57,14 +56,6 @@ class GalleryList extends Component {
 					</GridListTile>
 					{pictureList}
 				</GridList>
-				{/* <GridList className={classes.gridList}>
-					<GridListTile key='Subheader' cols={3} style={{ height: 'auto' }}>
-						<ListSubheader component='div'>
-							Gallery of My Life
-						</ListSubheader>
-					</GridListTile>
-					{pictureList}
-				</GridList> */}
 			</div>
 		);
 	}

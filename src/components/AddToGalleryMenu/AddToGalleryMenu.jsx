@@ -43,7 +43,7 @@ class AddToGallery extends Component {
 							color='primary'
 							aria-label='add'
 							className={classes.fab}
-							onClick={this.toggleDrawer}> 
+							onClick={this.toggleDrawer}>
 							<AddIcon />
 						</Fab>
 					</Tooltip>
@@ -55,6 +55,7 @@ class AddToGallery extends Component {
 							className={classes.fab}
 							onClick={() => this.props.toggleDeleteMode()}>
 							{this.props.inDeleteMode ? <Delete /> : <DeleteOutline />}
+
 							{/* Dynamic button - in delete mode is filled */}
 						</Fab>
 					</Tooltip>
@@ -63,7 +64,7 @@ class AddToGallery extends Component {
 					anchor='top'
 					open={this.state.isDrawerShown}
 					onClose={this.toggleDrawer}>
-					<MenuBarInputs postPicture={this.props.postPicture} />
+					<MenuBarInputs postPicture={this.props.postPicture} toggleDrawer={this.toggleDrawer} />
 				</Drawer>
 			</div>
 		);

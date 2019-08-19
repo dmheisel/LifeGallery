@@ -44,6 +44,7 @@ class MenuBarInputs extends Component {
 					justify='space-around'
 					alignItems='center'>
 					<Grid item xs={4}>
+						{/* Text field value and onchange tied to state */}
 						<TextField
 							id='pathInput'
 							label='Path to Photo'
@@ -60,6 +61,7 @@ class MenuBarInputs extends Component {
 						/>
 					</Grid>
 					<Grid item xs={8}>
+						{/* Text field value and onchange tied to state */}
 						<TextField
 							id='descriptionINput'
 							label='Brief Description of Photo'
@@ -82,7 +84,10 @@ class MenuBarInputs extends Component {
 							className={classes.button}
 							onClick={() => {
 								this.props.postPicture(this.state.newPicture);
-								this.setState({ newPicture: { path: '', description: '' } });
+								this.props.toggleDrawer();
+								this.setState({
+									newPicture: { path: '', description: '' }
+								});
 							}}>
 							Add Picture
 						</Button>

@@ -60,6 +60,7 @@ class App extends Component {
 			.delete(`/gallery/${id}`)
 			.then(response => {
 				console.log(`successful delete from server: ${response}`);
+				this.toggleDeleteMode();
 				this.getImages()
 			}).catch(error => {
 				console.log(`error on DELETE route to server: ${error}`)
