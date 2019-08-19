@@ -55,6 +55,10 @@ class App extends Component {
 		this.setState({inDeleteMode: !this.state.inDeleteMode})
 	}
 
+	deletePicture = (id) => {
+		console.log(`Marked picture with id ${id} to delete`)
+	}
+
 	componentDidMount = () => {
 		console.log('app loaded');
 		this.getImages();
@@ -64,10 +68,11 @@ class App extends Component {
 		return (
 			<Container className='App'>
 				<AddToGalleryMenu postPicture={this.postPicture} toggleDeleteMode={this.toggleDeleteMode} inDeleteMode={this.state.inDeleteMode}/>
-				{/* <AddPictureMenuBar postPicture={this.postPicture}/> */}
 				<GalleryList
 					galleryList={this.state.galleryList}
 					addLike={this.addLike}
+					inDeleteMode={this.state.inDeleteMode}
+					deletePicture={this.deletePicture}
 				/>
 			</Container>
 		);

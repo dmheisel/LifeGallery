@@ -46,16 +46,16 @@ class AddToGallery extends Component {
 							onClick={this.toggleDrawer}>
 							<AddIcon />
 						</Fab>
-          </Tooltip>
-          <Tooltip title="Delete an Image">
-					<Fab
-						color='secondary'
-						aria-label='Remove'
-						className={classes.fab}
-						onClick={() => this.props.toggleDeleteMode()}>
-						{this.props.inDeleteMode ? <Delete /> : <DeleteOutline />}
-					</Fab>
-          </Tooltip>
+					</Tooltip>
+					<Tooltip title='Delete an Image'>
+						<Fab
+							color='secondary'
+							aria-label='Remove'
+							className={classes.fab}
+							onClick={() => this.props.toggleDeleteMode()}>
+							{this.props.inDeleteMode ? <Delete /> : <DeleteOutline />}
+						</Fab>
+					</Tooltip>
 				</div>
 				<Drawer
 					anchor='top'
