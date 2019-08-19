@@ -2,17 +2,18 @@ import React, { Component } from 'react';
 // import './App.css';
 import axios from 'axios';
 import GalleryList from '../GalleryList/GalleryList';
-import Container from '@material-ui/core/Container';
-import AddPictureMenuBar from '../AddPictureMenuBar/AddPictureMenuBar';
 import AddToGalleryMenu from '../AddToGalleryMenu/AddToGalleryMenu'
+
+//imports from material-ui
+import Container from '@material-ui/core/Container';
+
 
 class App extends Component {
 	state = {
 		galleryList: [],
-		currentPictureId: '',
-		inDeleteMode: false
+		inDeleteMode: false,
 	};
-	
+
 	getImages = () => {
 		//gets images from the server using axios
 		axios.get('/gallery')
@@ -49,6 +50,22 @@ class App extends Component {
 			});
 	};
 
+	toggleDeleteMode = () => {
+		this.setState({inDeleteMode: !this.state.inDeleteMode})
+	}
+
+	deletePicture = (id) => {
+		console.log(`Marked picture with id ${id} to delete`)
+		// this.setState({dialogueOpen: true})
+		axios
+			.delete(`/gallery/${id}`)
+			.then(response => {
+				console.log(`successful delete from server: ${response}`);
+				this.getImages()
+			}).catch(error => {
+				console.log(`error on DELETE route to server: ${error}`)
+			})
+	}
 
 	componentDidMount = () => {
 		console.log('app loaded');
@@ -58,11 +75,12 @@ class App extends Component {
 	render() {
 		return (
 			<Container className='App'>
-				<AddToGalleryMenu postPicture={this.postPicture} />
-				{/* <AddPictureMenuBar postPicture={this.postPicture}/> */}
+				<AddToGalleryMenu postPicture={this.postPicture} toggleDeleteMode={this.toggleDeleteMode} inDeleteMode={this.state.inDeleteMode}/>
 				<GalleryList
 					galleryList={this.state.galleryList}
 					addLike={this.addLike}
+					inDeleteMode={this.state.inDeleteMode}
+					deletePicture={this.deletePicture}
 				/>
 			</Container>
 		);

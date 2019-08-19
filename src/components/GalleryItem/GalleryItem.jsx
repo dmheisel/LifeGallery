@@ -13,8 +13,8 @@ const styles = theme => ({
 	image: {
 		height: '100%',
 		width: 'auto',
-		objectFit: 'cover',
-	},
+		objectFit: 'cover'
+	}
 }); // sets color for icon to use at light pink
 
 class GalleryItem extends Component {
@@ -23,7 +23,6 @@ class GalleryItem extends Component {
 	}; // tracks if photo should have description overlaid or not
 
 	toggleDescription = () => {
-
 		this.setState({ isFlipped: !this.state.isFlipped });
 		console.log(this.state);
 	};
@@ -35,56 +34,55 @@ class GalleryItem extends Component {
 		//Titlebar has picture title, number of likes, and heart icon to add
 		return (
 			<div className={classes.image}>
-				<img
-					src={this.props.picture.path}
-					alt='gallery item'
-					className={classes.image}
-					onClick={this.toggleDescription}
-				/>
-				{this.state.isFlipped ? (
-					//ternary operator for flipped state -- if FLIPPED, the title bar is
-					//the entire description overlaid over the whole image.
-					//if NOT FLIPPED, titlebar is default image title and likes interface
-					<GridListTileBar
-						title={
-							<Typography
-								variant='subtitle1'
-								style={{ whiteSpace: 'normal', textAlign: 'center' }}>
-								{this.props.picture.description}
-							</Typography>
-						}
-						onClick={this.toggleDescription}
-						style={{ height: '100%'}}
-					/>
-				) : (
-					<GridListTileBar
-						title={this.props.picture.title}
-						subtitle={
-							<span>Liked by {this.props.picture.likes} people </span>
-						}
-						style={{ height: 'auto' }}
-						actionIcon={
-							<IconButton
-								className={classes.icon}
-								onClick={() => {
-									this.props.addLike(this.props.picture.id);
-								}}>
-								<FavoriteBorder /> {/* Heart Outline Icon */}
-							</IconButton>
-						}
-					/>
-				)}
-			</div>
-			// <GridListTile key={this.props.picture.id}>
-			// 	<img
-			// 		src={this.props.picture.path}
-			// 		alt='gallery item'
-			// 		cols={1}
-			// 		style={{ height: 200, width: 'auto', margin: 2 }}
-			// 		onClick={this.toggleDescription}
-			// 	/>
 
-			//
+					<img
+						src={this.props.picture.path}
+						alt='gallery item'
+						className={classes.image}
+						onClick={() => {
+							this.props.inDeleteMode
+								? this.props.deletePicture(this.props.picture.id)
+								: this.toggleDescription();
+						}}
+					/>
+					{this.state.isFlipped ? (
+						//ternary operator for flipped state -- if FLIPPED, the title bar is
+						//the entire description overlaid over the whole image.
+						//if NOT FLIPPED, titlebar is default image title and likes interface
+						<GridListTileBar
+							title={
+								<Typography
+									variant='subtitle1'
+									style={{ whiteSpace: 'normal', textAlign: 'center' }}>
+									{this.props.picture.description}
+								</Typography>
+							}
+							onClick={() => {
+								this.props.inDeleteMode
+									? this.props.deletePicture(this.props.picture.id)
+									: this.toggleDescription();
+							}}
+							style={{ height: '100%' }}
+						/>
+					) : (
+						<GridListTileBar
+							title={this.props.picture.title}
+							subtitle={
+								<span>Liked by {this.props.picture.likes} people </span>
+							}
+							style={{ height: 'auto' }}
+							actionIcon={
+								<IconButton
+									className={classes.icon}
+									onClick={() => {
+										this.props.addLike(this.props.picture.id);
+									}}>
+									<FavoriteBorder /> {/* Heart Outline Icon */}
+								</IconButton>
+							}
+						/>
+					)}
+			</div>
 		);
 	}
 }
