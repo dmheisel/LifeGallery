@@ -1,3 +1,5 @@
+CREATE DATABASE "react_gallery"
+
 CREATE TABLE "photos"(
 	"id" SERIAL PRIMARY KEY,
 	"path" VARCHAR(800) NOT NULL,
@@ -23,4 +25,3 @@ INSERT
 		('images/San_Gimignano.jpg', 'The view from Torre Grossa in San Gimignano - the city of Towers.  Breathtakingly beautiful, and incredibly surreal.'),
 		('images/Sant_Antimo.jpg', 'A small church where we stopped one afternoon to listen to the monks recite their chanted prayers.'),
 		('images/Tessa_fishing.jpg', 'A calm morning fishing, Tessa helped watch the lines.');
-		
